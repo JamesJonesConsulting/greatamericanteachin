@@ -1,0 +1,25 @@
+{
+    "name": "nselementary/greatamericanteachin",
+    "description": "Teach-in project for the Great American Teach-in.",
+    "authors": [
+        {
+            "name": "James Jones",
+            "email": "jamjon3@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4" : {
+            "nselementary\\" : "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.4",
+        "slim/slim": "2.5.*",
+        "usf-it/usf-idm-common": "dev-master",
+        "angular-ui/bootstrap": "dev-master",
+        "shkm/jsend": ">1.2.0",
+        "guzzlehttp/guzzle": "~5.0"
+    }
+}

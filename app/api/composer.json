@@ -20,6 +20,7 @@
         "usf-it/usf-idm-common": "dev-master",
         "angular-ui/bootstrap": "dev-master",
         "shkm/jsend": ">1.2.0",
-        "guzzlehttp/guzzle": "~5.0"
+        "guzzlehttp/guzzle": "~5.0",
+        "catfan/Medoo": "dev-master"
     }
 }

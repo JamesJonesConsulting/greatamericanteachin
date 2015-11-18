@@ -27,41 +27,26 @@ try {
         . ' Ensure slim/slim is in composer.json and run `make update --directory app/api`'
         );
     }
-//    if (!class_exists('\\USF\\SAQ\\saqservices')) {
-//        throw new \Exception(
-//        'Missing saqservices from Composer dependencies.'
-//        . ' Ensure usf/saq/saqservices is in composer.json and run `make update --directory app/api`'
-//        );
-//    }
+    if (!class_exists('\\nselementary\\GatiService')) {
+        throw new \Exception(
+        'Missing saqservices from Composer dependencies.'
+        . ' Ensure nselementary/GatiService is in composer.json and run `make update --directory app/api`'
+        );
+    }
     $app = new \Slim\Slim();
-//    $app->post('/getSAQ', function() use($app) {
-//        $saqservices = new \USF\SAQ\saqservices();
-//        $requestbody = json_decode($app->request->getBody(), true);
-//        if (array_key_exists('id', $requestbody)) {
-//            $resp = $saqservices->getSAQ($requestbody["id"]);
-//            $app->response->headers->set('Content-Type', 'application/json');
-//            $app->response->setBody($resp->encode());
-//        } else {
-//            $app->response->headers->set('Content-Type', 'application/json');
-//            $app->response->setBody((new \JSend\JSendResponse('fail', [
-//                'requestBody' => $requestbody
-//            ]))->encode());
-//        }
-//    });
-//    $app->post('/recordSAQItem', function() use($app) {
-//        $saqservices = new \USF\SAQ\saqservices();
-//        $requestbody = json_decode($app->request->getBody(), true);
-//        if (array_key_exists('id', $requestbody)) {
-//            $resp = $saqservices->recordSAQitem($requestbody["id"], $requestbody["sa_id"], $requestbody["answer"]);
-//            $app->response->headers->set('Content-Type', 'application/json');
-//            $app->response->setBody($resp->encode());
-//        } else {
-//            $app->response->headers->set('Content-Type', 'application/json');
-//            $app->response->setBody((new \JSend\JSendResponse('fail', [
-//                'requestBody' => $requestbody
-//            ]))->encode());
-//        }
-//    });
+    $app->post('/suggestions', function() use($app) {        
+        $gatiService = new \nselementary\GatiService();
+        $requestbody = \json_decode($app->request->getBody(), true);
+        $resp = $gatiService->addSuggestion($requestbody["suggestion"]);
+        $app->response->headers->set('Content-Type', 'application/json');
+        $app->response->setBody(\json_encode($resp));
+    });
+    $app->get('/suggestions', function() use($app) {        
+        $gatiService = new \nselementary\GatiService();
+        $resp = $gatiService->getSuggestions();
+        $app->response->headers->set('Content-Type', 'application/json');
+        $app->response->setBody(\json_encode($resp));
+    });
     $app->run();
     
 } catch(\Exception $ex) {

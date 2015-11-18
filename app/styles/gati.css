@@ -11,10 +11,11 @@
 @import url("reset.css");
 @import url("global-forms.css");
  
+    /* background: #F5F4EF url('../images/gati2.jpg'); */
 /***** Global *****/
 /* Body */
   body {
-    background: #F5F4EF url('../images/gati2.jpg');
+    background: #F5F4EF url('http://www.pcsb.org/cms/lib8/FL01903687/Centricity/Template/9/gb-watermark-bottom.png');
     color: #000305;
     font-size: 87.5%; /* Base font size: 14px */
     font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -22,7 +23,9 @@
     margin: 0;
     padding: 0;
     text-align: left;
+    transition: background 0.5s linear;
   }
+  .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
  
 /* Headings */
 h2 {font-size: 1.571em} /* 22px */

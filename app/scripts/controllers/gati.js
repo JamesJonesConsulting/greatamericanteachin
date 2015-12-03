@@ -25,13 +25,13 @@
                     console.log(data);
                     $scope.suggestions = data.suggestions;
                 });                
-            }
+            };
             $scope.addSuggestion = function(suggestion) {
                 gatiService.addSuggestion(suggestion).then(function (data) {
                     console.log(data);
                     $scope.suggestions = data.suggestions;
                 });                
-            }
+            };
             
             
             
